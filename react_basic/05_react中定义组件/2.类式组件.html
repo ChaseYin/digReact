@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jsx小练习</title>
+</head>
+<style>
+</style>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+ 
+    let data = [1,2213,3], sum = 0;
+    
+    for(let ele of data){
+        sum+=ele
+        console.log(`sum是`+sum)
+    }
+
+
+    let obj = {a:1,b:2,c:32}
+    for(let prop in obj){
+        console.log(obj[prop])
+    }
+
+
+    let objK = {a:1,b:2,c:32}
+    let a1 = ''
+    for(let k of Object.keys(objK)){
+        a1+=k;
+        console.log(a1)
+    }
+
+    let objV = {a:1,b:2,c:32}
+    let a2 = ''
+    for(let v of Object.values(objV)){
+        a2+=v;
+        console.log('value是：'+a2)
+    }
+
+    let objP = {a:1,b:2,c:32}
+    let a3 = ''
+    for(let [k,v] of Object.entries(objP)){
+        a3+=k+v;
+        console.log('entries是：'+a3)
+    }
+
+
+    let o = {x:1,y:2,z:3}
+    let i = 0, a = []
+    for(a[i++] in o){
+        console.log('a数组：'+a)
+    }
+    
+
+    //1. 创建类式组件
+    class MyComponent extends React.Component{
+
+        render(){
+            return <h2>类式组件（适用于定义复杂组件）</h2>
+        }
+
+    }
+    //2. 渲染组件到页面
+    ReactDOM.render(<MyComponent/>,document.getElementById('test'))
+
+
+    </script>
+</body>
+</html>

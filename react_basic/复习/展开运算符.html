@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>props练习</title>
+</head>
+<style>
+</style>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <script type="text/javascript">
+ 
+        let arr1 = [1,3,5,7,9]
+        let arr2 = [2,4,6,8,10]
+        console.log(...arr1)//可以展开一个数组，console出来1 3 5 7 9
+
+        let arr3 = [...arr1, ...arr2]
+        console.log(arr3)
+
+        //在函数中使用
+        function sum(...numbers){
+            return numbers.reduce((preValue,currentValue)=>{
+                return preValue+currentValue
+            })
+        }
+        console.log(sum(1,2,3,4))
+
+        //复制对象
+
+        var arr1 = [0, 1, 2];
+        var arr2 = [3, 4, 5];
+        var arr3 = [...arr1, ...arr2];
+
+
+        //还可以复制的时候修改
+        var arr = [...obj, name='jack']
+    </script>
+</body>
+</html>  

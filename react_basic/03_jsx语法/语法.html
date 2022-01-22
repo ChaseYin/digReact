@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>hello_react</title>
+</head>
+<style>
+    .title{
+        background-color:orange;
+        
+    }
+</style>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <!-- 引入react核心库(必须要先引入这个脚本) -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 再引入react-dom帮助支持react操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 最后引入babel帮助将jsx转换为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+
+    <!-- 告诉编译器写的是jsx，并且利用babel帮助翻译。如果不写babel则默认js -->
+    <script type="text/babel">
+
+    const myId = 'chase'
+    const myData = 'hello,React'
+
+
+    //第一步：创建虚拟DOM
+    const VDOM = (
+        <div>
+            <h2 className ="title" id={myId.toUpperCase()}>
+                <span style={{color:'red' , fontSize:'20px'}}>
+                    {myData.toUpperCase()}
+                </span>
+            </h2>
+            <input type="text"/>
+        </div>
+        )
+
+    const VDOM2 = (
+        <div>
+            <span style={{fontSize:'50px'}}>50FONT SIze</span>
+        </div>
+
+    )
+
+    //第二步：渲染虚拟DOM到页面节点去
+    ReactDOM.render(VDOM,document.getElementById('test'));
+    ReactDOM.render(VDOM2,document.getElementById('test2'));
+
+    </script>
+</body>
+</html>

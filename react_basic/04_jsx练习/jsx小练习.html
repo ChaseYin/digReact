@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>jsx小练习</title>
+</head>
+<style>
+    .title{
+        background-color:orange;
+        
+    }
+</style>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <!-- 引入react核心库(必须要先引入这个脚本) -->
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <!-- 再引入react-dom帮助支持react操作DOM -->
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <!-- 最后引入babel帮助将jsx转换为js -->
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+
+    <!-- 告诉编译器写的是jsx，并且利用babel帮助翻译。如果不写babel则默认js -->
+
+    <script type="text/babel">
+    //模拟一些数据
+    const data = ['Angular','React','Vue']
+
+    //React无法遍历对象
+    const obj = {name1:'Angular',name2:'React',name3:'Vue'}
+
+    //1.创建虚拟DOM
+    const VDOM = (
+        <div>
+            <h1>前端JS框架列表</h1>
+            <ul>
+                {
+                    //data.map(value,key)
+                    data.map((item,index)=>{
+                        return <li key={index}>{item}</li>
+                    })
+                }
+                
+            </ul>    
+        </div>
+
+    )
+
+    //2.渲染虚拟DOM到页面
+    ReactDOM.render(VDOM,test)
+
+   
+
+
+    </script>
+</body>
+</html>

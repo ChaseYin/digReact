@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>state练习</title>
+</head>
+<style>
+</style>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+ 
+    
+
+    //1. 创建类式组件
+    class Weather extends React.Component{
+        constructor(props){
+            super(props);
+            this.state = {
+                isHot:true
+            };
+            this.demo = this.demo.bind(this)
+            //this.demo指的是该实例查找到原型上的demo函数（实例本身并没有demo函数，要通过原型链去原型对象上找）
+            //把原型对象上的函数绑到了实例对象上
+            //然后把原型上的demo函数通过bind绑定到了自身这个实例的this上
+            //自身创建一个demo函数并指向原型上的demo函数
+            //等号右边执行完毕后，原型对象上的demo函数的this已经成功地指向了自身这个实例对象
+            //通过原型上的demo生成（通过bind指向）一个新的demo然后放在实例对象身上
+            //
+        }
+
+       
+
+        render(){
+
+            const {isHot} = this.state;//结构赋值
+
+            return <h1 onClick={this.demo}>今天天气很{this.state.isHot ? '炎热' : '凉爽'}</h1>
+        }
+
+        demo(){
+            //此方法放在了原型上，可以供实例查找使用
+            console.log('标题被点击了')
+           
+
+            //由于demo方式作为onClick的回调函数，所以不是被实例调用的，是直接调用。所以没法调用。
+            //类中的方法默认会开启局部严格模式
+            //所以demo中的this为undefined
+
+            let isHot = this.state.isHot;
+            //状态更新必须使用setState
+            this.setState({ isHot: !isHot });
+            
+
+       }
+
+        
+
+    }
+    //2. 渲染组件到页面
+    ReactDOM.render(<Weather/>,document.getElementById('test'))
+
+    // const title = document.getElementById("title")
+    // title.addEventListener('click',()=>{
+    //     alert("标题被点击了")
+    // })
+
+    // const title = document.getElementById("title")
+    // title.onclick = ()=>{
+    //     alert("标题被点击了")
+    // }
+
+    
+
+    </script>
+</body>
+</html>

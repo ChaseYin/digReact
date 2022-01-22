@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>props传参限制</title>
+</head>
+<style>
+</style>
+<body>
+    <!-- 准备好一个容器 -->
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+
+    <!-- 引入prop-types用于对组件标签属性进行限制，全局会多了一个对象PropTypes -->
+    <script type='text/javascript' src="../js/prop-types.js"></script>
+
+    <script type="text/babel">
+ 
+    
+
+    //1. 创建类式组件
+    class Person extends React.Component{
+        render(){
+
+           const {name,sex,age} = this.props;
+
+            return (
+                <ul>
+                    <li>姓名：{name}</li>
+                    <li>性别：{sex}</li>
+                    <li>年龄：{age}</li>
+                </ul>
+            )
+        }
+
+    }
+    //定义props的限制规则
+    Person.propTypes ={
+        //isRequired要求此属性是必须传递的
+        name: PropTypes.string.isRequired,
+        sex: PropTypes.string,
+
+        //要求传递的类型必须是number
+        sex: PropTypes.number,
+    }
+
+    Person.defaultProps = {
+        sex:'default'
+    }
+
+
+    //2. 渲染组件到页面
+    ReactDOM.render(<Person name = "tom" age = '18'/>, document.getElementById('test'))
+
+    const p = {name:'Laoliu', age: 18, sex:'test'}
+    //批量传递props
+    ReactDOM.render(<Person {...p}/>,document.getElementById('test3'))
+    
+    
+    
+
+    </script>
+</body>
+</html>  

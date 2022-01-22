@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>类的基本知识</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <script type="text/javascript">
+ 
+        //创建一个Person类
+        class Person {
+            //构造器方法
+            constructor(name,age){
+                //构造器中的this是指：类的实例对象（p1）
+                this.name = name;
+                this.age = age;
+            }
+
+            //一般方法
+            speak(){
+                //speak方法放在了哪里？------类的原型对象上，供实例对象使用
+
+
+                console.log(`I am ${this.name}`);
+            }
+        }
+
+
+        //继承
+
+        class Student extends Person{
+            constructor(name,age,grade){
+                super(name, age)//把共有属性传递给父类构造器
+                //必须在最开始调用super
+
+
+                this.grade = grade;
+            }
+
+            speak(){
+                console.log(`I am ${this.name}，我读${this.grade}`);
+            }
+        }
+
+        const p1 = new Person('tom',18);
+        const p2 = new Student('tom',18,'高一');
+        p1.speak()
+        p2.speak()
+        console.log(p1);
+        console.log(p2);
+
+    </script>
+</body>
+</html>

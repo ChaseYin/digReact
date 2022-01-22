@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>this指向复习</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <script type="text/javascript">
+    class Person {
+        constructor(name, age){
+            this.age = age;
+            this.name = name;
+
+        }
+
+        speak(){
+            console.log(this);
+        }
+    }
+
+    const p1 = new Person('tom',18);
+    p1.speak();
+
+    </script>
+</body>
+</html>
