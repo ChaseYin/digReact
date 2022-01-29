@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>事件处理</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    
+    class Demo extends React.Component{
+    
+        myRef = React.createRef();
+
+        showData = (event) =>{
+
+            //*主要就是给input加onBlur()函数，然后通过event.target.value获得input的值
+            alert(event.target.value);
+        }
+
+        lose = (event) =>{
+            alert(event.target.value);
+        }
+       
+        //借用箭头函数形式的回调函数，传参即是当前节点DOM
+        render(){
+            return (
+                <div>
+             
+                <input ref = {this.myRef} type="text" placeholder="点击按钮提示数据"/>
+                <button ref = "button1" onClick = {this.showData}>点我提示左侧的数据</button>
+               
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+
+
+
+    </script>
+</body>
+</html>

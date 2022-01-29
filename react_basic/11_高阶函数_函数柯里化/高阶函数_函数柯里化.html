@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>高阶函数_函数柯里化</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    
+    //创建组件
+
+    class Login extends React.Component {
+
+        state = {
+            username:'',
+            password:''
+        }
+        //对于DOM节点其中的数值，采用“现用现取”则就是非受控组件
+
+        handleSubmit = (event) =>{
+            event.preventDefault();//阻止组件默认事件：表单提交，可以保证页面不刷新
+            
+            const {username,password} = this.state
+            alert('username:'+username+'password:'+password)
+        }
+
+        //往状态里存username
+        saveFormData = (dataType) =>{
+
+            //实际上体现里函数的“柯里化技术”，调用函数继续返回函数
+
+            //console.log(event.target.value)
+            return (event)=>{
+                //console.log(dataType, event.target.value)
+                this.setState({
+                    [dataType]:event.target.value
+                })
+            }
+
+        }
+
+
+        render() {
+            return(
+                <div id="test">
+                    {/*//默认是Get请求*/}
+                    <form action="" onSubmit={this.handleSubmit}>
+                       { /*onChange发生之后，会调用this.saveFormData('username')返回的函数，而不是直接调用saveFromData()函数*/}
+                    用户名：<input onChange = {this.saveFormData('username')} type="text" name = "username"/>
+                    密码：<input onChange = {this.saveFormData('password')} type="password" name = "password"/>
+                    <button>登录</button>
+                    </form>
+                </div>
+            )
+        }
+       
+        
+    }
+    ReactDOM.render(<Login/>, document.getElementById('test'))
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>组件三大属性ref（回调函数形式的）</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    
+    class Demo extends React.Component{
+        state = {isHot:true}
+
+        showData = () =>{
+        const {input1} = this
+        alert(input1.value)
+    }
+
+        changeWeather = () =>{
+            let change = this.state.isHot
+            this.setState({isHot:!change})
+        }
+
+        render(){
+            const {isHot} = this.state
+            return(
+                <div>
+                    <h2>今天天气很{isHot? "炎热": "凉爽"}</h2>
+                    {/*js写注释的方法*/}
+                    <input ref = {(currentNode)=>{this.input1 = currentNode}}type="text"/>
+                    <button onClick = {this.showData}>点我提示输入的数据</button>
+                    <button onClick = {this.changeWeather}>点我切换天气</button>
+                </div>
+            )
+        }
+    }
+   
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+
+
+
+    </script>
+</body>
+</html>

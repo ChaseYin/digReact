@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>展开运算符</title>
+    <title>map</title>
 </head>
 <style>
 </style>
@@ -21,26 +21,25 @@
         let arr2 = [2,4,6,8,10]
         console.log(...arr1)//可以展开一个数组，console出来1 3 5 7 9
 
-        let arr3 = [...arr1, ...arr2]
-        console.log(arr3)
+        let arr3 = arr2.reduce((x,y)=>x+y,0)
+        console.log('arr3:'+arr3)
+        
 
-        //在函数中使用
-        function sum(...numbers){
-            return numbers.reduce((preValue,currentValue)=>{
-                return preValue+currentValue
-            })
-        }
-        console.log(sum(1,2,3,4))
+        let sum = 0
+        let arr = arr1.map((ele)=>
+            sum += ele
+            
+        )
 
-        //复制对象
+        let sum2 = 0
+        arr2.forEach((ele)=>{sum2+=ele})
+        console.log('sum2:'+sum2)
 
-        var arr1 = [0, 1, 2];
-        var arr2 = [3, 4, 5];
-        var arr3 = [...arr1, ...arr2];
-
-
-        //还可以复制的时候修改
-        var arr = [...obj, name='jack']
+        let arr4 = [2,4,6,[8,100]]
+        let ex = [...arr4]
+        console.log('t/f:'+arr4.some((ele)=>ele > 101))
+        //ex.push(...arr4)
+        console.log('ex:'+ex)
     </script>
 </body>
 </html>  

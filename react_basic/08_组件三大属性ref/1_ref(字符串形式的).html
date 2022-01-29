@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>组件三大属性ref（字符串形式的）</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+    
+    class Demo extends React.Component{
+
+        showData = () =>{
+             //使用箭头函数可以保证this不丢
+
+            const {input1} = this.refs
+            //拿到input这个真实的DOM节点
+            alert(input1.value)
+
+            // const inp = this.refs.input1
+            // alert(inp.value)
+           
+
+        }
+
+        lose = () =>{
+            const {input2} = this.refs
+            alert(input2.value)
+        }
+       
+
+        render(){
+            return (
+                <div>
+                <input ref = "input1" type="text" placeholder="点击按钮提示数据"/>
+                <button ref = "button1" onClick = {this.showData}>点我提示左侧的数据</button>
+                <input ref = "input2" onBlur = {this.lose} type="text" placeholder="失去焦点提示数据"/>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+
+
+
+    </script>
+</body>
+</html>

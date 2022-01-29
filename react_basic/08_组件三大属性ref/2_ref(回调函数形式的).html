@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>组件三大属性ref（回调函数形式的）</title>
+</head>
+<style>
+   
+</style>
+<body>
+    <div id="test"></div>
+    <div id="test2"></div>
+    <div id="test3"></div>
+    <script type="text/javascript" src="../js/react.development.js"></script>
+    <script type="text/javascript" src="../js/react-dom.development.js"></script>
+    <script type="text/javascript" src="../js/babel.min.js"></script>
+    <script type="text/babel">
+
+    let arr = [1,3,5,7,9]
+    let test = ""
+    arr.forEach((letter)=>{
+        test += letter
+        console.log(test)
+    })
+   
+    
+    class Demo extends React.Component{
+
+        showData = () =>{
+            const {input1} = this
+            alert(input1.value)
+        }
+
+        lose = () =>{
+            const {input2} = this
+            alert(input2.value)
+        }
+       
+        //借用箭头函数形式的回调函数，传参即是当前节点DOM
+        render(){
+            return (
+                <div>
+             
+                <input ref = {(currentNode)=>{this.input1 = currentNode}} type="text" placeholder="点击按钮提示数据"/>
+                <button ref = "button1" onClick = {this.showData}>点我提示左侧的数据</button>
+                <input ref = {(currentNode)=>{this.input2 = currentNode}} onBlur = {this.lose} type="text" placeholder="失去焦点提示数据"/>
+                </div>
+            )
+        }
+    }
+
+    ReactDOM.render(<Demo/>,document.getElementById('test'))
+
+
+
+    </script>
+</body>
+</html>
