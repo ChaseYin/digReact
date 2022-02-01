@@ -139,3 +139,11 @@ babel使用情况：ES6 ==> ES5; import; react写的是jsx，但是浏览器只�
 * `render()`有一个类似函数`componentDidMount()`：只在页面挂载完后调用一次
 * 还有一个`componentWillUnmount()`方法：用于组件将要卸载
 * 如上的函数称为：生命周期函数、生命周期钩子函数、生命周期钩子
+
+### 2月1日
+* 组件从创建到死亡会经历一些特定的阶段
+* React组件中包含一系列钩子函数（生命周期回调函数），会在特定的时刻调用
+* 我们在定义组件时，会在特定的生命周期回调函数中，做特定的工作
+* 组件的生命函数调用过程是：`constructor()` -> `componentWillMount()` -> `render()` -> `componentDidMount()`
+* `shouldComponentUpdate()`是判断组件是否需要更新的“阀门”，如果自己重写此函数，则必须返回一个boolean值，true代表允许可以更新。
+* `forceUpdate()`：即使state没有更新，也可以更新组件，不受到阀门（`shouldComponentUpdate()`）的控制。
